@@ -37,8 +37,8 @@ const Footer = () => {
           </div>
         </footer>
       </div>
-      <hr />
-      <div className="footer footer-center p-4 bg-base-200 text-base-content">
+      
+      <div className="footer footer-center p-4 bg-base-200 border-t-2 border-gray-50 text-base-content">
         <div>
           <p className="text-base font-semibold">Copyright © 2023 - All right reserved by Wheelie World Ltd</p>
         </div>
