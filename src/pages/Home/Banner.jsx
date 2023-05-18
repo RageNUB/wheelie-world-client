@@ -9,18 +9,18 @@ const Banner = () => {
           className="w-full rounded-lg"
         />
         <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-          <div className="ml-8 space-y-8">
-            <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
-              Drive into adventure <br /> with our high-quality <br /> car toys!
+          <div className="ml-8 space-y-1 lg:space-y-8 lg:w-1/2">
+            <h1 className="lg:text-6xl text-xl font-bold text-base-100">
+              Drive into adventure with our high-quality car toys!
             </h1>
-            <p className="text-white text-xl">
+            <p className="text-white lg:text-xl">
               If you are looking for a toy shop then look no further. Go on,
               treat the kids with our huge collection of car toys.
             </p>
-            <button className="btn btn-primary text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
+            <button className="btn btn-primary min-h-6 h-8 lg:h-12 text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
           </div>
         </div>
-        <div className="absolute flex justify-end transform -translate-y-1/2 right-5 left-5 bottom-3.5">
+        <div className="absolute flex justify-end transform -translate-y-1/2 right-5 left-5 bottom-0 lg:bottom-3.5">
           <a href="#slide4" className="btn btn-circle btn-primary">
             <FaArrowLeft></FaArrowLeft>
           </a>
@@ -35,18 +35,18 @@ const Banner = () => {
           className="w-full rounded-lg"
         />
         <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-          <div className="ml-8 space-y-8">
-            <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
-              Drive into adventure <br /> with our high-quality <br /> car toys!
+          <div className="ml-8 lg:space-y-8 lg:w-1/2">
+            <h1 className="lg:text-6xl text-xl font-bold text-base-100">
+              Drive into adventure with our high-quality car toys!
             </h1>
-            <p className="text-white text-xl">
+            <p className="text-white lg:text-xl">
               If you are looking for a toy shop then look no further. Go on,
               treat the kids with our huge collection of car toys.
             </p>
-            <button className="btn btn-primary text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
+            <button className="btn btn-primary min-h-6 h-8 lg:h-12 text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
           </div>
         </div>
-        <div className="absolute flex justify-between transform -translate-y-1/2 right-5 bottom-3.5">
+        <div className="absolute flex justify-between transform -translate-y-1/2 right-5 bottom-0 lg:bottom-3.5">
           <a href="#slide1" className="btn btn-circle btn-primary">
             <FaArrowLeft></FaArrowLeft>
           </a>
@@ -61,18 +61,18 @@ const Banner = () => {
           className="w-full rounded-lg"
         />
         <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-          <div className="ml-8 space-y-8">
-            <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
-              Drive into adventure <br /> with our high-quality <br /> car toys!
+          <div className="ml-8 lg:space-y-8 lg:w-1/2">
+            <h1 className="lg:text-6xl text-xl font-bold text-base-100">
+              Drive into adventure with our high-quality car toys!
             </h1>
-            <p className="text-white text-xl">
+            <p className="text-white lg:text-xl">
               If you are looking for a toy shop then look no further. Go on,
               treat the kids with our huge collection of car toys.
             </p>
-            <button className="btn btn-primary text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
+            <button className="btn btn-primary min-h-6 h-8 lg:h-12 text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
           </div>
         </div>
-        <div className="absolute flex justify-between transform -translate-y-1/2 right-5 bottom-3.5">
+        <div className="absolute flex justify-between transform -translate-y-1/2 right-5 bottom-0 lg:bottom-3.5">
           <a href="#slide2" className="btn btn-circle btn-primary">
             <FaArrowLeft></FaArrowLeft>
           </a>
@@ -86,18 +86,20 @@ const Banner = () => {
           src="https://img.freepik.com/premium-photo/business-images-travel-planning_250469-13082.jpg?w=1380"
           className="w-full rounded-lg"
         /><div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-        <div className="ml-8 space-y-8">
-          <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
-            Drive into adventure <br /> with our high-quality <br /> car toys!
-          </h1>
-          <p className="text-white text-xl">
-            If you are looking for a toy shop then look no further. Go on,
-            treat the kids with our huge collection of car toys.
-          </p>
-          <button className="btn btn-primary text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
+        <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
+          <div className="ml-8 lg:space-y-8 lg:w-1/2">
+            <h1 className="lg:text-6xl text-xl font-bold text-base-100">
+              Drive into adventure with our high-quality car toys!
+            </h1>
+            <p className="text-white lg:text-xl">
+              If you are looking for a toy shop then look no further. Go on,
+              treat the kids with our huge collection of car toys.
+            </p>
+            <button className="btn btn-primary min-h-6 h-8 lg:h-12 text-white"><FaShoppingCart></FaShoppingCart> <span className="ml-2">Buy Now</span></button>
+          </div>
         </div>
       </div>
-        <div className="absolute flex justify-between transform -translate-y-1/2 right-5 bottom-3.5">
+        <div className="absolute flex justify-between transform -translate-y-1/2 right-5 bottom-0 lg:bottom-3.5">
           <a href="#slide3" className="btn btn-circle btn-primary">
             <FaArrowLeft></FaArrowLeft>
           </a>
