@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="navbar bg-emerald-200 px-4 py-3">
       <div className="navbar-start">
@@ -64,8 +75,51 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
-      </div>
+          <div>
+            {user && (
+              <div
+                className=" mr-3 dropdown dropdown-hover dropdown-bottom dropdown-end"
+              >
+                {user.photoURL ? (
+                  <img
+                    className="rounded-full w-10"
+                    tabIndex={0}
+                    src={user?.photoURL}
+                  />
+                ) : (
+                  <FaUserCircle className="text-4xl"></FaUserCircle>
+                )}
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <p className="font-semibold text-lg text-primary">
+                      {user.displayName ? user.displayName : "User"}
+                    </p>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogOut}
+                      className="btn btn-primary text-white"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+          <div>
+            {user ? (
+              ""
+            ) : (
+              <Link to="/login" className="btn btn-primary text-white">
+                Login
+              </Link>
+            )}
+          </div>
+        </div>
     </div>
   );
 };

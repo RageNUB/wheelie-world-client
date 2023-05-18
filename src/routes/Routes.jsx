@@ -5,6 +5,11 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import MyToys from "../pages/MyToys/MyToys";
+import AddToy from "../pages/AddToy/AddToy";
+import AllToys from "../pages/AllToys/AllToys";
+import Blogs from "../pages/Blogs/Blogs";
+import PrivateRoute from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +27,22 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register></Register>
+            },
+            {
+                path: "my-toys",
+                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+            },
+            {
+                path: "add-a-toy",
+                element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
+            },
+            {
+                path: "all-toys",
+                element: <AllToys></AllToys>
+            },
+            {
+                path: "blogs",
+                element: <Blogs></Blogs>
             }
         ]
     }
