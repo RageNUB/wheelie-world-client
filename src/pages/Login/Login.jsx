@@ -1,4 +1,5 @@
 import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -46,8 +47,16 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary text-white">Login</button>
+              <button className="btn btn-primary">Login</button>
             </div>
+            <p>
+                <small>
+                  Already Have an Account?{" "}
+                  <Link to="/register" className="underline">
+                    Please Register
+                  </Link>
+                </small>
+              </p>
             <div className="divider">OR</div>
               <div className="rounded-full flex justify-center">
                 <button className="btn btn-wide btn-outline text-primary hover:bg-primary hover:border-none mb-2"><FaGoogle className="mr-2"></FaGoogle>login with Google</button>
