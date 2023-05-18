@@ -3,10 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-    const [error, setError] = useState("");
-    const { createUser } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const [checked, setChecked] = useState(false);
+  const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const [checked, setChecked] = useState(false);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -129,7 +129,9 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-4">
-              <button disabled={!checked} className="btn btn-primary">Register</button>
+              <button disabled={!checked} className="btn btn-primary">
+                Register
+              </button>
             </div>
             <p>
               <small>
