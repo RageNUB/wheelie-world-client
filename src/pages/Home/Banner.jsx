@@ -9,7 +9,7 @@ const Banner = () => {
           className="w-full rounded-lg"
         />
         <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-          <div className="ml-5 space-y-5">
+          <div className="ml-8 space-y-8">
             <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
               Drive into adventure <br /> with our high-quality <br /> car toys!
             </h1>
@@ -35,7 +35,7 @@ const Banner = () => {
           className="w-full rounded-lg"
         />
         <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-          <div className="ml-5 space-y-5">
+          <div className="ml-8 space-y-8">
             <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
               Drive into adventure <br /> with our high-quality <br /> car toys!
             </h1>
@@ -61,7 +61,7 @@ const Banner = () => {
           className="w-full rounded-lg"
         />
         <div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-          <div className="ml-5 space-y-5">
+          <div className="ml-8 space-y-8">
             <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
               Drive into adventure <br /> with our high-quality <br /> car toys!
             </h1>
@@ -86,7 +86,7 @@ const Banner = () => {
           src="https://img.freepik.com/premium-photo/business-images-travel-planning_250469-13082.jpg?w=1380"
           className="w-full rounded-lg"
         /><div className="absolute rounded-lg flex items-center bg-gradient-to-r from-[rgba(0,0,0,1)] to-[rgba(0,212,255,0)] left-0 bottom-0 top-0 right-0">
-        <div className="ml-5 space-y-5">
+        <div className="ml-8 space-y-8">
           <h1 className="lg:text-6xl text-2xl font-bold text-base-100">
             Drive into adventure <br /> with our high-quality <br /> car toys!
           </h1>
