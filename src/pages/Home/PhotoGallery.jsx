@@ -22,7 +22,8 @@ const PhotoGallery = () => {
     console.log("lightGallery has been initialized");
   };
   return (
-    <div className="App">
+    <div className="App mt-8 text-center">
+      <h2 className="text-4xl font-bold uppercase mb-6">Gallery</h2>
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]} mode="lg-fade">
         {
           product.map(pd => <Photo

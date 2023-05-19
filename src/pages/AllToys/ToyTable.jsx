@@ -1,16 +1,18 @@
+import { useContext } from "react";
+import { DataContext } from "../../providers/DataProvider";
 
-const ToyTable = ({product}) => {
-    const {toy_name, img, seller_name, price, quantity, sub_category} = product;
+const ToyTable = ({ product }) => {
+  const {handleSingleData} = useContext(DataContext);
+
+  const { _id, toy_name, img, seller_name, price, quantity, sub_category } =
+    product;
   return (
     <tr>
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img
-                src={img}
-                alt="Avatar Tailwind CSS Component"
-              />
+              <img src={img} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
           <div>
@@ -18,14 +20,14 @@ const ToyTable = ({product}) => {
           </div>
         </div>
       </td>
-      <td>
-        {seller_name}
-      </td>
+      <td>{seller_name}</td>
       <td>{sub_category}</td>
       <td>${price}</td>
       <td>{quantity}pcs</td>
       <th>
-        <button className="btn btn-ghost btn-sm">details</button>
+        <label onClick={() => handleSingleData(_id)} htmlFor="my-modal-3" className="btn btn-ghost btn-sm">
+          view details
+        </label>
       </th>
     </tr>
   );
