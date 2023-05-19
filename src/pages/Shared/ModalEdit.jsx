@@ -37,7 +37,6 @@ const ModalEdit = () => {
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        form.reset();
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -176,11 +175,13 @@ const ModalEdit = () => {
                   className="input input-bordered input-primary w-full"
                 />
               </div>
+              <label className="col-span-2" htmlFor="my-modal-2">
               <input
-                className="btn btn-primary text-white btn-block col-span-2"
+                className="btn btn-primary text-white btn-block"
                 type="submit"
                 value="Update Details"
               />
+              </label>
             </div>
           </form>
         </div>
