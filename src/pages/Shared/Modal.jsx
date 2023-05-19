@@ -5,7 +5,7 @@ import '@smastrom/react-rating/style.css'
 
 const Modal = () => {
   const { data } = useContext(DataContext);
-  const { _id, toy_name, img, seller_name, price, quantity,rating, sub_category, description } =
+  const { toy_name, img, seller_name, price, quantity,rating, description } =
     data;
 
   return (
@@ -34,7 +34,6 @@ const Modal = () => {
               <p>Price: <span className="text-sm font-semibold">${price}</span></p>
               <p>Available Quantity: <span className="text-sm font-semibold">{quantity}</span></p>
               <p className="flex items-center">Rating: <span className="text-sm font-semibold ml-1 mr-2">{rating}</span><Rating style={{maxWidth: 130}} value={rating} readOnly></Rating></p>
-              
             </div>
           </div>
         </div>
