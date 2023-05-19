@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
+import { DataContext } from "../../providers/DataProvider";
+
 const MyToyTable = ({product}) => {
-    const { toy_name, img, seller_name, price, quantity, sub_category } =
+    const {handleSingleData} = useContext(DataContext);
+    const {_id, toy_name, img, seller_name, price, quantity, sub_category } =
     product;
   return (
     <tr>
@@ -21,10 +26,19 @@ const MyToyTable = ({product}) => {
       <td>{quantity}pcs</td>
       <th>
         <label
-          htmlFor="my-modal-3"
+          onClick={() => handleSingleData(_id)}
+          htmlFor="my-modal-2"
           className="btn btn-ghost btn-sm"
         >
-          view details
+          <FaEdit></FaEdit> <span className="ml-1">edit</span>
+        </label>
+      </th>
+      <th>
+        <label
+          htmlFor="my-modal-3"
+          className="btn btn-error btn-sm"
+        >
+          <FaRegTrashAlt></FaRegTrashAlt> <span className="ml-1">delete</span>
         </label>
       </th>
     </tr>
