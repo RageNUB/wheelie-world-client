@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { DataContext } from "../../providers/DataProvider";
 
-const MyToyTable = ({product}) => {
-    const {handleSingleData} = useContext(DataContext);
-    const {_id, toy_name, img, seller_name, price, quantity, sub_category } =
+const MyToyTable = ({ product, handleDelete }) => {
+  const { handleSingleData } = useContext(DataContext);
+  const { _id, toy_name, img, seller_name, price, quantity, sub_category } =
     product;
+
   return (
     <tr>
       <td>
@@ -35,7 +36,7 @@ const MyToyTable = ({product}) => {
       </th>
       <th>
         <label
-          htmlFor="my-modal-3"
+          onClick={() => handleDelete(_id)}
           className="btn btn-error btn-sm"
         >
           <FaRegTrashAlt></FaRegTrashAlt> <span className="ml-1">delete</span>

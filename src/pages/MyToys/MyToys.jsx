@@ -1,23 +1,71 @@
 import { useContext, useEffect, useState } from "react";
 import MyToyTable from "./MyToyTable";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
-    const {user} = useContext(AuthContext);
-    const [products, setProducts] = useState([]);
+  const { user } = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
 
-    const url = `http://localhost:5000/myToys?email=${user.email}`;
-    useEffect( () => {
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setProducts(data))
-    },[url])
+  const url = `http://localhost:5000/myToys?email=${user.email}`;
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, [url]);
+
+  const handleDelete = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-error ml-4 text-white",
+        cancelButton: "btn btn-success",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/myToys/${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              const remaining = products.filter(
+                (product) => product._id !== id
+              );
+              setProducts(remaining);
+            });
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your file has been deleted.",
+            "success"
+          );
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Cancelled Successfully",
+            "error"
+          );
+        }
+      });
+  };
 
   return (
     <div className="mt-5 mb-5">
-      <h2 className="text-4xl font-bold text-center mb-5 uppercase">
-        My Toys
-      </h2>
+      <h2 className="text-4xl font-bold text-center mb-5 uppercase">My Toys</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -34,7 +82,11 @@ const MyToys = () => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <MyToyTable key={product._id} product={product}></MyToyTable>
+              <MyToyTable
+                key={product._id}
+                product={product}
+                handleDelete={handleDelete}
+              ></MyToyTable>
             ))}
           </tbody>
         </table>
