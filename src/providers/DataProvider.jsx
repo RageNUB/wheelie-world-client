@@ -9,10 +9,10 @@ const DataProvider = ({children}) => {
         .then(res => res.json())
         .then(data => setData(data))
     }
-    console.log(data);
+    
     const dataInfo = {
         data,
-        handleSingleData
+        handleSingleData,
     }
     return (
         <DataContext.Provider value={dataInfo}>

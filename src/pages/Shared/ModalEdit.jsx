@@ -1,14 +1,53 @@
 import { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
-import { Rating } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
+import Swal from "sweetalert2";
 
 const ModalEdit = () => {
-    const {data} = useContext(DataContext);
-  const { toy_name, img, seller_name,seller_email, price, quantity,rating, description } =
-    data;
-    console.log(toy_name, img, seller_name,seller_email, price, quantity,rating, description)
+  const { data } = useContext(DataContext);
+  const {
+    _id,
+    toy_name,
+    img,
+    seller_name,
+    seller_email,
+    price,
+    quantity,
+    sub_category,
+    rating,
+    description,
+  } = data;
 
+  const handleUpdate = event => {
+    event.preventDefault();
+    const form = event.target;
+    const photo = form.photo.value;
+    const price = form.price.value;
+    const quantity = form.quantity.value;
+    const details = form.details.value;
+    const toy = {photo, price, quantity, details}
+    console.log(toy, _id)
+
+    fetch(`http://localhost:5000/myToys/${_id}`, {
+        method: "PUT",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(toy)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        form.reset();
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Toy Details has been updated',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    })
+
+  }
   return (
     <div>
       <input type="checkbox" id="my-modal-2" className="modal-toggle" />
@@ -21,22 +60,129 @@ const ModalEdit = () => {
             ✕
           </label>
 
-          <div className="lg:flex items-center">
-            <div>
-              <figure>
-                <img className="w-full rounded-xl max-w-md" src={img} alt="Movie" />
-              </figure>
+          <form onSubmit={handleUpdate}>
+            <h1 className="text-4xl font-bold text-center mt-2 ">Edit Details</h1>
+            <div className="grid grid-cols-2 gap-5 mt-2 mb-3">
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Picture URL</p>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  defaultValue={img}
+                  placeholder="Picture URL"
+                  className="input input-bordered input-primary w-full"
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Toy Name</p>
+                </label>
+                <input
+                  type="text"
+                  name="toyName"
+                  defaultValue={toy_name}
+                  placeholder="Toy Name"
+                  className="input input-bordered input-primary w-full"
+                  disabled
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Seller Name</p>
+                </label>
+                <input
+                  type="text"
+                  name="sellerName"
+                  defaultValue={seller_name}
+                  placeholder="Seller Name"
+                  className="input input-bordered input-primary w-full"
+                  disabled
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Seller Email</p>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  defaultValue={seller_email}
+                  placeholder="Seller Email"
+                  className="input input-bordered input-primary w-full"
+                  disabled
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Sub-Category</p>
+                </label>
+                <input
+                  type="text"
+                  name="sub"
+                  defaultValue={sub_category}
+                  placeholder="Sub-Category"
+                  className="input input-bordered input-primary w-full"
+                  disabled
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Price</p>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  defaultValue={price}
+                  placeholder="Price-$"
+                  className="input input-bordered input-primary w-full"
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Rating</p>
+                </label>
+                <input
+                  type="text"
+                  name="rating"
+                  defaultValue={rating}
+                  placeholder="Rating"
+                  className="input input-bordered input-primary w-full"
+                  disabled
+                />
+              </div>
+              <div>
+                <label>
+                  <p className="text-md font-semibold">Available Quantity</p>
+                </label>
+                <input
+                  type="number"
+                  name="quantity"
+                  defaultValue={quantity}
+                  placeholder="Available Quantity"
+                  className="input input-bordered input-primary w-full"
+                />
+              </div>
+              <div className="col-span-2">
+                <label>
+                  <p className="text-md font-semibold">Detail Description</p>
+                </label>
+                <input
+                  type="text"
+                  name="details"
+                  defaultValue={description}
+                  placeholder="Detail Description"
+                  className="input input-bordered input-primary w-full"
+                />
+              </div>
+              <input
+                className="btn btn-primary text-white btn-block col-span-2"
+                type="submit"
+                value="Update Details"
+              />
             </div>
-            <div className="card-body">
-              <h2 className="card-title">{toy_name}</h2>
-              <p><span>{description}</span></p>
-              <p>Seller: <span className="text-md font-bold">{seller_name}</span></p>
-              <p>Email: <span className="text-sm font-semibold">{seller_email}</span></p>
-              <p>Price: <span className="text-sm font-semibold">${price}</span></p>
-              <p>Available Quantity: <span className="text-sm font-semibold">{quantity}</span></p>
-              <div className="flex items-center">Rating: <span className="text-sm font-semibold ml-1 mr-2">{rating}</span><Rating style={{maxWidth: 130}} value={rating} readOnly></Rating></div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
