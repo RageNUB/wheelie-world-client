@@ -27,7 +27,7 @@ const ModalEdit = () => {
     const toy = {photo, price, quantity, details}
     console.log(toy, _id)
 
-    fetch(`http://localhost:5000/myToys/${_id}`, {
+    fetch(`https://wheelie-world-server.vercel.app/myToys/${_id}`, {
         method: "PUT",
         headers: {
             "content-type": "application/json"
