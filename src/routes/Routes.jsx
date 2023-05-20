@@ -10,6 +10,7 @@ import AddToy from "../pages/AddToy/AddToy";
 import AllToys from "../pages/AllToys/AllToys";
 import Blogs from "../pages/Blogs/Blogs";
 import PrivateRoute from "./PrivateRoutes";
+import Error from "../pages/Error/Error";
 
 const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
                 element: <Blogs></Blogs>
             }
         ]
+    },
+    {
+        path: "*",
+        element: <Error></Error>
     }
 ]);
 
