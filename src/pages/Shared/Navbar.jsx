@@ -54,7 +54,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case font-bold text-2xl">
-          Wheelie World
+          <img src="https://i.ibb.co/kqvk1NB/new-wheelieworld-logo.png" alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -79,7 +79,7 @@ const Navbar = () => {
                 All Toys
               </NavLink>
           </li>
-          <li>
+          {user && <li>
             <NavLink
                 className={({ isActive }) =>
                   isActive ? "active font-bold text-white" : ""
@@ -89,7 +89,9 @@ const Navbar = () => {
                 My Toys
               </NavLink>
           </li>
-          <li>
+          }
+          {
+            user && <li>
             <NavLink
                 className={({ isActive }) =>
                   isActive ? "active font-bold text-white" : ""
@@ -99,6 +101,7 @@ const Navbar = () => {
                 Add A Toy
               </NavLink>
           </li>
+          }
           <li>
             <NavLink
                 className={({ isActive }) =>

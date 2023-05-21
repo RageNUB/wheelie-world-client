@@ -4,6 +4,7 @@ export const DataContext = createContext([]);
 
 const DataProvider = ({children}) => {
     const [data, setData] = useState([]);
+    
     const handleSingleData = id => {
         fetch(`https://wheelie-world-server.vercel.app/products/${id}`)
         .then(res => res.json())
