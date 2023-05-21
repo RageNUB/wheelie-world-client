@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import ToyCard from "./ToyCard";
+import Spinner from "../Shared/Spinner";
 
 const ShopByCategory = () => {
   const [toys, setToys] = useState([]);
+
+  if(toys.length < 1){
+    <Spinner></Spinner>
+  }
 
   const url = `http://localhost:5000/category?category=Racing`;
   useEffect(() => {

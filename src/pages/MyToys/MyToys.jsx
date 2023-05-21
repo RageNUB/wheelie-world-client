@@ -2,10 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import MyToyTable from "./MyToyTable";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import Spinner from "../Shared/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
+
+  if(products.length < 1) {
+    <Spinner></Spinner>
+  }
 
   const url = `https://wheelie-world-server.vercel.app/myToys?email=${user.email}`;
   useEffect(() => {
@@ -65,6 +71,9 @@ const MyToys = () => {
 
   return (
     <div className="mt-5 mb-5">
+      <Helmet>
+        <title>Wheelie World | My Toys</title>
+      </Helmet>
       <h2 className="text-4xl font-bold text-center mb-5 uppercase">My Toys</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

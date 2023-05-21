@@ -2,12 +2,16 @@ import { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import Spinner from "./Spinner";
 
 const Modal = () => {
   const { data } = useContext(DataContext);
   const { toy_name, img, seller_name,seller_email, price, quantity,rating, description } =
     data;
 
+    if(!data) {
+      <Spinner></Spinner>
+    }
   return (
     <div>
       <input type="checkbox" id="my-modal-3" className="modal-toggle" />

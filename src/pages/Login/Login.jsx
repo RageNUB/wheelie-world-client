@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { googleSignIn, signIn } = useContext(AuthContext);
@@ -41,6 +42,9 @@ const Login = () => {
 
   return (
     <div className="hero min-h-screen bg-base-100">
+      <Helmet>
+        <title>Wheelie World | Login</title>
+      </Helmet>
       <div className="hero-content flex-col ">
         <div className="lg:flex items-center">
           <h2 className="text-5xl font-bold">Welcome To </h2>

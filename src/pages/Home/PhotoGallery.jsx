@@ -8,16 +8,21 @@ import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
 import { useEffect, useState } from "react";
 import Photo from "./Photo";
+import Spinner from "../Shared/Spinner";
 
 const PhotoGallery = () => {
   const [product, setProduct] = useState([]);
+
+  if(product.length < 1) {
+    <Spinner></Spinner>
+  }
 
   useEffect( ()=> {
     fetch("https://wheelie-world-server.vercel.app/products")
     .then(res => res.json())
     .then(data => setProduct(data))
   },[])
-  console.log(product)
+  
   const onInit = () => {
     console.log("lightGallery has been initialized");
   };

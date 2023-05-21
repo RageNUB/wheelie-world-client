@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
@@ -55,6 +56,9 @@ const AddToy = () => {
   }
   return (
     <form onSubmit={handleAddToy}>
+      <Helmet>
+        <title>Wheelie World | Add A Toy</title>
+      </Helmet>
       <h1 className="text-4xl font-bold text-center mt-8 ">Add A Toy</h1>
       <div className="grid grid-cols-2 gap-5 mt-6 mb-8">
         <div>

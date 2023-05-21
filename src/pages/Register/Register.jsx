@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -42,6 +43,9 @@ const Register = () => {
 
   return (
     <div className="hero min-h-screen bg-base-100 mb-5">
+      <Helmet>
+        <title>Wheelie World | Registration</title>
+      </Helmet>
       <div className="hero-content flex-col ">
         <div className="lg:flex items-center">
           <h2 className="text-5xl font-bold">Welcome To </h2>

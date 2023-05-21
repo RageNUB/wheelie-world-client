@@ -1,11 +1,20 @@
 import { useLoaderData } from "react-router-dom";
 import ToyTable from "./ToyTable";
+import Spinner from "../Shared/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const AllToys = () => {
   const products = useLoaderData();
 
+  if(products.length < 1) {
+    <Spinner></Spinner>
+  }
+
   return (
     <div className="mt-5 mb-5">
+      <Helmet>
+        <title>Wheelie World | All Toys</title>
+      </Helmet>
         <h2 className="text-4xl font-bold text-center mb-5 uppercase">All Toys</h2>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
