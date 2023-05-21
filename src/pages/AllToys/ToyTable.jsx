@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ToyTable = ({ product }) => {
+  const {user} = useContext(AuthContext);
   const {handleSingleData} = useContext(DataContext);
-
   const { _id, toy_name, img, seller_name, price, quantity, sub_category } =
     product;
+
   return (
     <tr>
       <td>
@@ -25,7 +27,7 @@ const ToyTable = ({ product }) => {
       <td>${price}</td>
       <td>{quantity}pcs</td>
       <th>
-        <label onClick={() => handleSingleData(_id)} htmlFor="my-modal-3" className="btn btn-ghost btn-sm">
+        <label onClick={() => handleSingleData(_id)} htmlFor={user ? "my-modal-3" : ""} className="btn btn-ghost btn-sm">
           view details
         </label>
       </th>

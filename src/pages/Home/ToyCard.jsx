@@ -2,8 +2,10 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const ToyCard = ({ toy }) => {
+    const {user} = useContext(AuthContext)
   const { handleSingleData } = useContext(DataContext);
   const { _id, img, toy_name, price, rating } = toy;
 
@@ -27,7 +29,7 @@ const ToyCard = ({ toy }) => {
         <div className="card-actions mt-4">
           <label
             onClick={() => handleSingleData(_id)}
-            htmlFor="my-modal-3"
+            htmlFor={user ? "my-modal-3" : ""}
             className="btn btn-primary btn-block text-white"
           >
             View Details
