@@ -4,21 +4,23 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import Spinner from "../Shared/Spinner";
 import { Helmet } from "react-helmet-async";
+import { FaAngleDown } from "react-icons/fa";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
+  const [sort, setSort] = useState(1);
 
   if(products.length < 1) {
     <Spinner></Spinner>
   }
 
-  const url = `https://wheelie-world-server.vercel.app/myToys?email=${user.email}`;
+  // const url = `https://wheelie-world-server.vercel.app/myToys?email=${user.email}&sort=${sort}`;
   useEffect(() => {
-    fetch(url)
+    fetch(`https://wheelie-world-server.vercel.app/myToys?email=${user.email}&sort=${sort}`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, [url]);
+  }, [user, sort]);
 
   const handleDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -75,6 +77,22 @@ const MyToys = () => {
         <title>Wheelie World | My Toys</title>
       </Helmet>
       <h2 className="text-4xl font-bold text-center mb-5 uppercase">My Toys</h2>
+      <div className="dropdown dropdown-bottom flex justify-end">
+        <label tabIndex={0} className="btn btn-secondary m-1">
+          <span className="pr-2">Sort By</span> <FaAngleDown></FaAngleDown>
+        </label>
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li>
+            <a onClick={() => setSort(1)}>Ascending Price</a>
+          </li>
+          <li>
+            <a onClick={() => setSort(0)}>Descending Price</a>
+          </li>
+        </ul>
+      </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
