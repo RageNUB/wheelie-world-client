@@ -1,15 +1,22 @@
 import ToyTable from "./ToyTable";
 import Spinner from "../Shared/Spinner";
 import { Helmet } from "react-helmet-async";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
+  const loadedProducts = useLoaderData();
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [data, setData] = useState([]);
+  const page = Math.ceil(loadedProducts.length / 20);
+  const pageNumbers = [...Array(page).keys()];
+  const [search, setSearch] = useState("");
+  const searchArea = useRef(null)
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products?&page=${currentPage}`)
+    fetch(
+      `https://wheelie-world-server.vercel.app/products?page=${currentPage}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [currentPage]);
@@ -18,25 +25,12 @@ const AllToys = () => {
     <Spinner></Spinner>;
   }
 
-  // useEffect(() => {
-
-  // },[])
-  const handleFilter = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const search = form.search.value;
-    fetch(`http://localhost:5000/products`)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-    if (search !== "") {
-      const filteredData = data.filter((toy) => toy.toy_name == search);
-      setProducts(filteredData);
-    } else {
-      fetch(`http://localhost:5000/products?&page=${currentPage}`)
-        .then((res) => res.json())
-        .then((data) => setProducts(data));
-    }
-  };
+  const handleSearch = () => {
+    setSearch(searchArea.current.value);
+    fetch(`https://wheelie-world-server.vercel.app/product?search=${search}`)
+    .then(res => res.json())
+    .then(data => setProducts(data))
+  }
 
   return (
     <div className="mt-5 mb-5">
@@ -46,16 +40,34 @@ const AllToys = () => {
       <h2 className="text-4xl font-bold text-center mb-5 uppercase">
         All Toys
       </h2>
-      <div className="flex justify-end">
-      <form className=" mb-5 mt-5 btn-group" onSubmit={handleFilter}>
-        <input
-          type="text"
-          placeholder="Search By Name"
-          name="search"
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input className="btn btn-primary" type="submit" value="Search" />
-      </form>
+
+      <div className="flex justify-end mb-4">
+        <div className="form-control">
+          <div className="input-group">
+            <input
+              ref={searchArea}
+              type="text"
+              placeholder="Search…"
+              className="input input-bordered"
+            />
+            <button onClick={handleSearch} className="btn btn-square">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
 
       <div className="overflow-x-auto w-full">
@@ -79,30 +91,19 @@ const AllToys = () => {
         </table>
         <div className="text-center">
           <div className="btn-group">
-            <button
-              onClick={() => setCurrentPage(1)}
-              className={
-                currentPage == 1 ? "btn btn-active" : "btn btn-secondary"
-              }
-            >
-              1
-            </button>
-            <button
-              onClick={() => setCurrentPage(2)}
-              className={
-                currentPage == 2 ? "btn btn-active" : "btn btn-secondary"
-              }
-            >
-              2
-            </button>
-            <button
-              onClick={() => setCurrentPage(3)}
-              className={
-                currentPage == 3 ? "btn btn-active" : "btn btn-secondary"
-              }
-            >
-              3
-            </button>
+            {pageNumbers.map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page + 1)}
+                className={
+                  currentPage === page + 1
+                    ? "btn btn-active"
+                    : "btn btn-secondary"
+                }
+              >
+                {page + 1}
+              </button>
+            ))}
           </div>
         </div>
       </div>

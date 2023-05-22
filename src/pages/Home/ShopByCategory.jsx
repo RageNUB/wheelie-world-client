@@ -11,7 +11,7 @@ const ShopByCategory = () => {
     <Spinner></Spinner>
   }
 
-  const url = `http://localhost:5000/category?category=Racing`;
+  const url = `https://wheelie-world-server.vercel.app/category?category=Racing`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -19,7 +19,7 @@ const ShopByCategory = () => {
   }, [url]);
 
   const handleCategoryData = (category) => {
-    fetch(`http://localhost:5000/category?category=${category}`)
+    fetch(`https://wheelie-world-server.vercel.app/category?category=${category}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   };

@@ -24,10 +24,10 @@ const AddToy = () => {
         img: photo,
         seller_name: sellerName,
         seller_email: email,
-        price: price,
-        rating: rating,
+        price: parseFloat(price),
+        rating: parseFloat(rating),
         sub_category: sub,
-        quantity: quantity,
+        quantity: parseInt(quantity),
         description: details 
     }
 
@@ -123,7 +123,7 @@ const AddToy = () => {
             <p className="text-md font-semibold">Price</p>
           </label>
           <input
-            type="number"
+            type="text"
             name="price"
             placeholder="Price-$"
             className="input input-bordered input-primary w-full"

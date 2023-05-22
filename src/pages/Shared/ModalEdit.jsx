@@ -24,7 +24,12 @@ const ModalEdit = () => {
     const price = form.price.value;
     const quantity = form.quantity.value;
     const details = form.details.value;
-    const toy = {photo, price, quantity, details}
+    const toy = {
+      photo: photo, 
+      price: parseFloat(price), 
+      quantity: parseInt(quantity), 
+      details: details
+    }
     console.log(toy, _id)
 
     fetch(`https://wheelie-world-server.vercel.app/myToys/${_id}`, {
@@ -37,13 +42,16 @@ const ModalEdit = () => {
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        Swal.fire({
+        if(data.modifiedCount > 0) {
+          Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Toy Details has been updated',
             showConfirmButton: false,
             timer: 1500
           })
+        }
+        
     })
 
   }
@@ -131,7 +139,7 @@ const ModalEdit = () => {
                   <p className="text-md font-semibold">Price</p>
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   name="price"
                   defaultValue={price}
                   placeholder="Price-$"
