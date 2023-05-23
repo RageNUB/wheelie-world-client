@@ -7,8 +7,8 @@ import Spinner from "../Shared/Spinner";
 const ShopByCategory = () => {
   const [toys, setToys] = useState([]);
 
-  if(toys.length < 1){
-    <Spinner></Spinner>
+  if (toys.length < 1) {
+    <Spinner></Spinner>;
   }
 
   const url = `https://wheelie-world-server.vercel.app/category?category=Racing`;
@@ -19,7 +19,9 @@ const ShopByCategory = () => {
   }, [url]);
 
   const handleCategoryData = (category) => {
-    fetch(`https://wheelie-world-server.vercel.app/category?category=${category}`)
+    fetch(
+      `https://wheelie-world-server.vercel.app/category?category=${category}`
+    )
       .then((res) => res.json())
       .then((data) => setToys(data));
   };

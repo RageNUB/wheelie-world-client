@@ -1,19 +1,31 @@
 import { useContext } from "react";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import { DataContext } from "../../providers/DataProvider";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const MyToyTable = ({ product, handleDelete }) => {
   const { handleSingleData } = useContext(DataContext);
   const { _id, toy_name, img, seller_name, price, quantity, sub_category } =
     product;
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
+
   return (
-    <tr>
+    <tr
+      data-aos="fade-left"
+      data-aos-anchor="#example-anchor"
+      data-aos-offset="500"
+      data-aos-duration="1000"
+    >
       <td>
         <div className="flex items-center space-x-3">
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
-              <img src={img} alt="Avatar Tailwind CSS Component" />
+              <img src={img} alt={toy_name} />
             </div>
           </div>
           <div>

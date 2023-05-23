@@ -11,13 +11,14 @@ const MyToys = () => {
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState(1);
 
-  if(products.length < 1) {
-    <Spinner></Spinner>
+  if (products.length < 1) {
+    <Spinner></Spinner>;
   }
 
-  // const url = `https://wheelie-world-server.vercel.app/myToys?email=${user.email}&sort=${sort}`;
   useEffect(() => {
-    fetch(`https://wheelie-world-server.vercel.app/myToys?email=${user.email}&sort=${sort}`)
+    fetch(
+      `https://wheelie-world-server.vercel.app/myToys?email=${user.email}&sort=${sort}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [user, sort]);
@@ -59,9 +60,7 @@ const MyToys = () => {
             "Your file has been deleted.",
             "success"
           );
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
             "Cancelled Successfully",

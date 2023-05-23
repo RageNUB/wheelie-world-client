@@ -10,7 +10,7 @@ const DataProvider = ({ children }) => {
 
   const handleSingleData = (id) => {
     if (!user) {
-        toast.warning("You have to log in first to view details")
+      toast.warning("You have to log in first to view details");
     } else {
       fetch(`https://wheelie-world-server.vercel.app/products/${id}`)
         .then((res) => res.json())

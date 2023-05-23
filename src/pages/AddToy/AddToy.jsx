@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
 
-  const handleAddToy = event => {
+  const handleAddToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const toyName = form.toyName.value;
@@ -18,42 +18,42 @@ const AddToy = () => {
     const sub = form.sub.value;
     const quantity = form.quantity.value;
     const details = form.details.value;
-    
+
     const myToy = {
-        toy_name: toyName,
-        img: photo,
-        seller_name: sellerName,
-        seller_email: email,
-        price: parseFloat(price),
-        rating: parseFloat(rating),
-        sub_category: sub,
-        quantity: parseInt(quantity),
-        description: details 
-    }
+      toy_name: toyName,
+      img: photo,
+      seller_name: sellerName,
+      seller_email: email,
+      price: parseFloat(price),
+      rating: parseFloat(rating),
+      sub_category: sub,
+      quantity: parseInt(quantity),
+      description: details,
+    };
 
     fetch("https://wheelie-world-server.vercel.app/myToys", {
-        method:"POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(myToy)
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(myToy),
     })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
         handleAlert();
         form.reset();
-    })
-  }
-  const handleAlert = ()=> {
+      });
+  };
+  const handleAlert = () => {
     Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Toy added to your My Toy list',
-        showConfirmButton: false,
-        timer: 1500
-      })
-  }
+      position: "center",
+      icon: "success",
+      title: "Toy added to your My Toy list",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
   return (
     <form onSubmit={handleAddToy}>
       <Helmet>

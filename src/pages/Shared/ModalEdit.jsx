@@ -17,7 +17,7 @@ const ModalEdit = () => {
     description,
   } = data;
 
-  const handleUpdate = event => {
+  const handleUpdate = (event) => {
     event.preventDefault();
     const form = event.target;
     const photo = form.photo.value;
@@ -25,36 +25,34 @@ const ModalEdit = () => {
     const quantity = form.quantity.value;
     const details = form.details.value;
     const toy = {
-      photo: photo, 
-      price: parseFloat(price), 
-      quantity: parseInt(quantity), 
-      details: details
-    }
-    console.log(toy, _id)
+      photo: photo,
+      price: parseFloat(price),
+      quantity: parseInt(quantity),
+      details: details,
+    };
+    console.log(toy, _id);
 
     fetch(`https://wheelie-world-server.vercel.app/myToys/${_id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(toy)
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toy),
     })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        if(data.modifiedCount > 0) {
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Toy Details has been updated',
+            position: "center",
+            icon: "success",
+            title: "Toy Details has been updated",
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
         }
-        
-    })
-
-  }
+      });
+  };
   return (
     <div>
       <input type="checkbox" id="my-modal-2" className="modal-toggle" />
@@ -68,7 +66,9 @@ const ModalEdit = () => {
           </label>
 
           <form onSubmit={handleUpdate}>
-            <h1 className="text-4xl font-bold text-center mt-2 ">Edit Details</h1>
+            <h1 className="text-4xl font-bold text-center mt-2 ">
+              Edit Details
+            </h1>
             <div className="grid grid-cols-2 gap-5 mt-2 mb-3">
               <div>
                 <label>
@@ -184,11 +184,11 @@ const ModalEdit = () => {
                 />
               </div>
               <label className="col-span-2" htmlFor="my-modal-2">
-              <input
-                className="btn btn-primary text-white btn-block"
-                type="submit"
-                value="Update Details"
-              />
+                <input
+                  className="btn btn-primary text-white btn-block"
+                  type="submit"
+                  value="Update Details"
+                />
               </label>
             </div>
           </form>

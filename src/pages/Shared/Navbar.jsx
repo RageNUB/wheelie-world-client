@@ -37,30 +37,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/all-toys">All Toys</Link>
-            </li>
-            <li>
-              <Link to="/my-toys">My Toys</Link>
-            </li>
-            <li>
-              <Link to="/add-a-toy">Add A Toy</Link>
-            </li>
-            <li>
-              <Link to="/blogs">Blogs</Link>
-            </li>
-          </ul>
-        </div>
-        <Link to="/" className="btn btn-ghost normal-case font-bold text-2xl">
-          <img src="https://i.ibb.co/kqvk1NB/new-wheelieworld-logo.png" alt="" />
-        </Link>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-          <NavLink
+              <NavLink
                 className={({ isActive }) =>
                   isActive ? "active font-bold text-white" : ""
                 }
@@ -68,9 +45,9 @@ const Navbar = () => {
               >
                 Home
               </NavLink>
-          </li>
-          <li>
-            <NavLink
+            </li>
+            <li>
+              <NavLink
                 className={({ isActive }) =>
                   isActive ? "active font-bold text-white" : ""
                 }
@@ -78,32 +55,33 @@ const Navbar = () => {
               >
                 All Toys
               </NavLink>
-          </li>
-          {user && <li>
-            <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active font-bold text-white" : ""
-                }
-                to="/my-toys"
-              >
-                My Toys
-              </NavLink>
-          </li>
-          }
-          {
-            user && <li>
-            <NavLink
-                className={({ isActive }) =>
-                  isActive ? "active font-bold text-white" : ""
-                }
-                to="/add-a-toy"
-              >
-                Add A Toy
-              </NavLink>
-          </li>
-          }
-          <li>
-            <NavLink
+            </li>
+            {user && (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "active font-bold text-white" : ""
+                  }
+                  to="/my-toys"
+                >
+                  My Toys
+                </NavLink>
+              </li>
+            )}
+            {user && (
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "active font-bold text-white" : ""
+                  }
+                  to="/add-a-toy"
+                >
+                  Add A Toy
+                </NavLink>
+              </li>
+            )}
+            <li>
+              <NavLink
                 className={({ isActive }) =>
                   isActive ? "active font-bold text-white" : ""
                 }
@@ -111,6 +89,71 @@ const Navbar = () => {
               >
                 Blogs
               </NavLink>
+            </li>
+          </ul>
+        </div>
+        <Link to="/" className="btn btn-ghost normal-case font-bold text-2xl">
+          <img
+            src="https://i.ibb.co/kqvk1NB/new-wheelieworld-logo.png"
+            alt=""
+          />
+        </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "active font-bold text-white" : ""
+              }
+              to="/"
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "active font-bold text-white" : ""
+              }
+              to="/all-toys"
+            >
+              All Toys
+            </NavLink>
+          </li>
+          {user && (
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "active font-bold text-white" : ""
+                }
+                to="/my-toys"
+              >
+                My Toys
+              </NavLink>
+            </li>
+          )}
+          {user && (
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? "active font-bold text-white" : ""
+                }
+                to="/add-a-toy"
+              >
+                Add A Toy
+              </NavLink>
+            </li>
+          )}
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "active font-bold text-white" : ""
+              }
+              to="/blogs"
+            >
+              Blogs
+            </NavLink>
           </li>
         </ul>
       </div>

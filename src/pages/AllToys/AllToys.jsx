@@ -11,7 +11,7 @@ const AllToys = () => {
   const page = Math.ceil(loadedProducts.length / 20);
   const pageNumbers = [...Array(page).keys()];
   const [search, setSearch] = useState("");
-  const searchArea = useRef(null)
+  const searchArea = useRef(null);
 
   useEffect(() => {
     fetch(
@@ -28,9 +28,9 @@ const AllToys = () => {
   const handleSearch = () => {
     setSearch(searchArea.current.value);
     fetch(`https://wheelie-world-server.vercel.app/product?search=${search}`)
-    .then(res => res.json())
-    .then(data => setProducts(data))
-  }
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  };
 
   return (
     <div className="mt-5 mb-5">
